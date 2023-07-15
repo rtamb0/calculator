@@ -51,14 +51,17 @@ digits.forEach((digit) => {
 });
 
 function displayNumber(value) {
-    if (value === 'clear') {
-        display.textContent = '';
-        digitArray.splice(0);
-    } else if (value === 'remove') {
-        display.textContent = display.textContent.substring(0, display.textContent.length - 1);
-        digitArray.pop();
-    } else {
-        display.textContent += value;
-        digitArray.push(value);
+    switch (value) {
+        case 'clear':
+            display.textContent = '';
+            digitArray.splice(0);
+            break;
+        case 'remove':
+            display.textContent = display.textContent.substring(0, display.textContent.length - 1);
+            digitArray.pop();
+            break;
+        default:
+            display.textContent += value;
+            digitArray.push(value);
     };
 };
