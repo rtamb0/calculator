@@ -58,6 +58,9 @@ function displayNumber(value) {
     switch (value) {
         case 'equal':
             let result = operate(...digitArray);
+            if (digitArray.length === 1) {
+                result = digitArray[0];
+            };
             displayResult.textContent = `${result}`;
             break;
         case 'clear':
