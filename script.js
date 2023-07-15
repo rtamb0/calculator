@@ -43,10 +43,11 @@ displayContainer.appendChild(display);
 
 const digits = document.querySelectorAll('.columns button');
 digits.forEach((digit) => {
-    digit.addEventListener('click', displayNumber);
-})
+    digit.addEventListener('click', () => {
+        displayNumber(digit.value);
+    });
+});
 
-
-function displayNumber() {
-    display.textContent += 'test'
-}
+function displayNumber(number) {
+    display.textContent += number;
+};
