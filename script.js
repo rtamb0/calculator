@@ -36,12 +36,17 @@ function operate(num1, operator, num2) {
     };
 };
 
-// Function that displays the numbers and store that numbers in variable
+// Function that displays the numbers and store that numbers in variable when clicked
 const display = document.createElement('p');
 const displayContainer = document.querySelector('.calculator-display');
 displayContainer.appendChild(display);
 
+const digits = document.querySelectorAll('.columns button');
+digits.forEach((digit) => {
+    digit.addEventListener('click', displayNumber);
+})
+
+
 function displayNumber() {
-
-
+    display.textContent += 'test'
 }
