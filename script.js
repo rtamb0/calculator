@@ -23,7 +23,6 @@ let operator;
 let num2;
 
 // Function that calls the operator functions when it takes the above variables
-
 function operate(num1, operator, num2) {
     switch (operator) {
         case '+':
@@ -36,3 +35,13 @@ function operate(num1, operator, num2) {
             return divide(num1, num2);
     };
 };
+
+// Function that displays the numbers and store that numbers in variable
+const display = document.createElement('p');
+const displayContainer = document.querySelector('.calculator-display');
+displayContainer.appendChild(display);
+
+function displayNumber() {
+
+
+}
