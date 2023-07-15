@@ -46,7 +46,6 @@ let digitArray = [];
 const digits = document.querySelectorAll('.columns button');
 digits.forEach((digit) => {
     digit.addEventListener('click', () => {
-        digitArray.push(digit.value);
         displayNumber(digit.value);
     });
 });
@@ -54,9 +53,12 @@ digits.forEach((digit) => {
 function displayNumber(value) {
     if (value === 'clear') {
         display.textContent = '';
+        digitArray.splice(0);
     } else if (value === 'remove') {
         display.textContent = display.textContent.substring(0, display.textContent.length - 1);
+        digitArray.pop();
     } else {
         display.textContent += value;
+        digitArray.push(value);
     };
 };
