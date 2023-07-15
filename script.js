@@ -41,6 +41,9 @@ const display = document.createElement('p');
 const displayContainer = document.querySelector('.calculator-display');
 displayContainer.appendChild(display);
 
+const displayResult = document.createElement('p');
+displayContainer.appendChild(displayResult);
+
 let digitArray = [];
 
 const digits = document.querySelectorAll('.columns button');
@@ -52,6 +55,9 @@ digits.forEach((digit) => {
 
 function displayNumber(value) {
     switch (value) {
+        case 'equal':
+            
+            break;
         case 'clear':
             display.textContent = '';
             digitArray.splice(0);
