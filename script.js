@@ -54,11 +54,12 @@ digits.forEach((digit) => {
 });
 
 function displayNumber(value) {
+    Number(value);
     switch (value) {
-        // case 'equal':
-        //     // let result = operate()
-        //     displayResult.textContent = `${result}`
-        //     break;
+        case 'equal':
+            let result = operate(...digitArray);
+            displayResult.textContent = `${result}`;
+            break;
         case 'clear':
             display.textContent = '';
             digitArray.splice(0);
