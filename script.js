@@ -41,13 +41,22 @@ const display = document.createElement('p');
 const displayContainer = document.querySelector('.calculator-display');
 displayContainer.appendChild(display);
 
+let digitArray = [];
+
 const digits = document.querySelectorAll('.columns button');
 digits.forEach((digit) => {
     digit.addEventListener('click', () => {
+        digitArray.push(digit.value);
         displayNumber(digit.value);
     });
 });
 
-function displayNumber(number) {
-    display.textContent += number;
+function displayNumber(value) {
+    if (value === 'clear') {
+        display.textContent = '';
+    } else if (value === 'remove') {
+        display.textContent = display.textContent.substring(0, display.textContent.length - 1);
+    } else {
+        display.textContent += value;
+    };
 };
