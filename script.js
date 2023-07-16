@@ -57,6 +57,7 @@ function displayNumber(value) {
     Number(value);
     switch (value) {
         case 'equal':
+            // Make a loop where if there are two or more digits before the operator, combine those digits into one
             let result = operate(...digitArray);
             if (digitArray.length === 1) {
                 result = digitArray[0];
