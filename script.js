@@ -82,18 +82,18 @@ function displayNumber(value) {
 };
 
 function combineNumberStart(arr) {
-    for (let i1 = 1; !(isNaN(arr[i1]) && arr[i1] !== '.');) {
-        arr[0] += arr[i1];
-        arr.splice(i1, 1);
+    for (let addNum = 1; !(isNaN(arr[addNum]) && arr[addNum] !== '.');) {
+        arr[0] += arr[addNum];
+        arr.splice(addNum, 1);
     };
 };
 
 function combineNumberEnd(arr) {
     arr.forEach((num, i) => {
         if (isNaN(num) && num !== '.') {
-            for (let i2 = (i + 1) + 1; i2 < arr.length;) {
-                arr[i + 1] += arr[i2];
-                arr.splice(i2, 1);
+            for (let addNum = (i + 1) + 1; addNum < arr.length;) {
+                arr[i + 1] += arr[addNum];
+                arr.splice(addNum, 1);
             };
         };
     });
