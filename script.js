@@ -26,13 +26,13 @@ let num2;
 function operate(num1, operator, num2) {
     switch (operator) {
         case '+':
-            return add(num1, num2);
+            return add(+num1, +num2);
         case '-':
-            return subtract(num1, num2);
+            return subtract(+num1, +num2);
         case '*':
-            return multiply(num1, num2);
+            return multiply(+num1, +num2);
         case '/':
-            return divide(num1, num2);
+            return divide(+num1, +num2);
     };
 };
 
@@ -54,22 +54,20 @@ digits.forEach((digit) => {
 });
 
 function displayNumber(value) {
-    console.log(value)
-    // if (isNaN(value))
-    //     value = Number(value);
-    // };
     switch (value) {
         case 'equal':
+            console.log(digitArray)
             // Make a loop where if there are two or more digits before the operator, combine those digits into one
             for (let i = digitArray.length - 1; i >= 0; i--) {
-                console.log(typeof digitArray[i])
                 if (isNaN(digitArray[i])) {
                     for (let i2 = (i + 1) + 1; i2 < digitArray.length; i2++){
                         digitArray[i + 1] += digitArray[i2];
                     };
                 };
             };
+            console.log(digitArray)
             let result = operate(...digitArray);
+            console.log(digitArray)
             if (digitArray.length === 1) {
                 result = digitArray[0];
             };
