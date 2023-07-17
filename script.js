@@ -60,8 +60,9 @@ function displayNumber(value) {
             // Make a loop where if there are two or more digits before the operator, combine those digits into one
             for (let i = digitArray.length - 1; i >= 0; i--) {
                 if (isNaN(digitArray[i])) {
-                    for (let i2 = (i + 1) + 1; i2 < digitArray.length; i2++){
+                    for (let i2 = (i + 1) + 1; i2 < digitArray.length;) {
                         digitArray[i + 1] += digitArray[i2];
+                        digitArray.splice(i2, 1);
                     };
                 };
             };
