@@ -54,10 +54,21 @@ digits.forEach((digit) => {
 });
 
 function displayNumber(value) {
-    Number(value);
+    console.log(value)
+    // if (isNaN(value))
+    //     value = Number(value);
+    // };
     switch (value) {
         case 'equal':
             // Make a loop where if there are two or more digits before the operator, combine those digits into one
+            for (let i = digitArray.length - 1; i >= 0; i--) {
+                console.log(typeof digitArray[i])
+                if (isNaN(digitArray[i])) {
+                    for (let i2 = (i + 1) + 1; i2 < digitArray.length; i2++){
+                        digitArray[i + 1] += digitArray[i2];
+                    };
+                };
+            };
             let result = operate(...digitArray);
             if (digitArray.length === 1) {
                 result = digitArray[0];
