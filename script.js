@@ -56,21 +56,20 @@ digits.forEach((digit) => {
 function displayNumber(value) {
     switch (value) {
         case 'equal':
-            console.log(digitArray)
             // Make a loop where if there are two or more digits before the operator, combine those digits into one
-            for (let i = digitArray.length - 1; i >= 0; i--) {
-                if (isNaN(digitArray[i])) {
-                    for (let i2 = (i + 1) + 1; i2 < digitArray.length;) {
-                        digitArray[i + 1] += digitArray[i2];
-                        digitArray.splice(i2, 1);
-                    };
-                };
-            };
-            console.log(digitArray)
-            let result = operate(...digitArray);
-            console.log(digitArray)
+            let result;
             if (digitArray.length === 1) {
                 result = digitArray[0];
+            } else {
+                for (let i = digitArray.length - 1; i >= 0; i--) {
+                    if (isNaN(digitArray[i])) {
+                        for (let i2 = (i + 1) + 1; i2 < digitArray.length;) {
+                            digitArray[i + 1] += digitArray[i2];
+                            digitArray.splice(i2, 1);
+                        };
+                    };
+                };
+                result = operate(...digitArray);
             };
             displayResult.textContent = `${result}`;
             break;
