@@ -61,6 +61,7 @@ function displayNumber(value) {
             if (digitArray.length === 1) {
                 result = digitArray[0];
             } else {
+                combineNumberStart(digitArray);
                 combineNumberEnd(digitArray);
                 result = operate(...digitArray);
             };
@@ -80,13 +81,24 @@ function displayNumber(value) {
     };
 };
 
+
 function combineNumberEnd(arr) {
-    for (let i = arr.length - 1; i >= 0; i--) {
-        if (isNaN(arr[i])) {
+    arr.forEach((num, i) => {
+        if (isNaN(num)) {
             for (let i2 = (i + 1) + 1; i2 < arr.length;) {
                 arr[i + 1] += arr[i2];
                 arr.splice(i2, 1);
             };
         };
+    });
+};
+
+function combineNumberStart(arr) {
+    for (let i1 = 1; i1 > 0;) {
+        if (isNaN(arr[i1])) {
+            break;
+        };
+        arr[0] += arr[i1];
+        arr.splice(i1, 1);
     };
 };
