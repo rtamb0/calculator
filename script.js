@@ -61,14 +61,7 @@ function displayNumber(value) {
             if (digitArray.length === 1) {
                 result = digitArray[0];
             } else {
-                for (let i = digitArray.length - 1; i >= 0; i--) {
-                    if (isNaN(digitArray[i])) {
-                        for (let i2 = (i + 1) + 1; i2 < digitArray.length;) {
-                            digitArray[i + 1] += digitArray[i2];
-                            digitArray.splice(i2, 1);
-                        };
-                    };
-                };
+                combineNumberEnd(digitArray);
                 result = operate(...digitArray);
             };
             displayResult.textContent = `${result}`;
@@ -84,5 +77,16 @@ function displayNumber(value) {
         default:
             display.textContent += value;
             digitArray.push(value);
+    };
+};
+
+function combineNumberEnd(arr) {
+    for (let i = arr.length - 1; i >= 0; i--) {
+        if (isNaN(arr[i])) {
+            for (let i2 = (i + 1) + 1; i2 < arr.length;) {
+                arr[i + 1] += arr[i2];
+                arr.splice(i2, 1);
+            };
+        };
     };
 };
