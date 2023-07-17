@@ -91,7 +91,8 @@ function combineNumberStart(arr) {
 function combineNumberEnd(arr) {
     arr.forEach((num, i) => {
         if (isNaN(num) && num !== '.') {
-            for (let addNum = (i + 1) + 1; addNum < arr.length;) {
+            for (let addNum = (i + 1) + 1; !(isNaN(arr[addNum]) && arr[addNum] !== '.') ||
+            (addNum < arr.length);) {
                 arr[i + 1] += arr[addNum];
                 arr.splice(addNum, 1);
             };
