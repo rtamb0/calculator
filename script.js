@@ -81,24 +81,25 @@ function displayNumber(value) {
     };
 };
 
+function combineNumberStart(arr) {
+    arr.reverse().forEach((num, i) => {
+            if (isNaN(num) && num !== '.') {
+                for (let i2 = (i + 1) + 1; i2 < arr.length;) {
+                    arr[i + 1] += arr[i2];
+                    arr.splice(i2, 1);
+                };
+            };
+        });
+    arr.reverse();
+};
 
 function combineNumberEnd(arr) {
     arr.forEach((num, i) => {
-        if (isNaN(num)) {
+        if (isNaN(num) && num !== '.') {
             for (let i2 = (i + 1) + 1; i2 < arr.length;) {
                 arr[i + 1] += arr[i2];
                 arr.splice(i2, 1);
             };
         };
     });
-};
-
-function combineNumberStart(arr) {
-    for (let i1 = 1; i1 > 0;) {
-        if (isNaN(arr[i1])) {
-            break;
-        };
-        arr[0] += arr[i1];
-        arr.splice(i1, 1);
-    };
 };
