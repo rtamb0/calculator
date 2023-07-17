@@ -99,3 +99,5 @@ function combineNumberEnd(arr) {
         };
     });
 };
+
+//Make a function/changes to code that if array length is longer than 3, it lets you make an array for the first equation, calculate that, and then calculate the rest of the equation like that one by one
