@@ -105,9 +105,9 @@ function combineNumberEnd(arr) {
 };
 
 function separateNumber(arr) {
-    arr.forEach((value, i) => {
-        if (!(Number.isInteger(Number(value))) && !(isNaN(value))) {
-            const decimalValue = value.split('').reverse();
+    for (let i = arr.length - 1; i >= 0; i--){
+        if (!(Number.isInteger(Number(arr[i]))) && !(isNaN(arr[i]))) {
+            const decimalValue = arr[i].split('').reverse();
             decimalValue.forEach((value, decimalI) => {
                 if (decimalI === 0) {
                     arr.splice(i, 1, value);
@@ -116,6 +116,5 @@ function separateNumber(arr) {
                 };
             });
         };
-    });
+    };
 };
-//Make a function/changes to code that if array length is longer than 3, it lets you make an array for the first equation, calculate that, and then calculate the rest of the equation like that one by one
