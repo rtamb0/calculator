@@ -23,16 +23,18 @@ let operator;
 let num2;
 
 // Function that calls the operator functions when it takes the above variables
-function operate(num1, operator, num2) {
+function operate(value1, operator, value2) {
+    const num1 = Number(value1);
+    const num2 = Number(value2);
     switch (operator) {
         case '+':
-            return add(+num1, +num2);
+            return add(num1, num2);
         case '-':
-            return subtract(+num1, +num2);
+            return subtract(num1, num2);
         case '*':
-            return multiply(+num1, +num2);
+            return multiply(num1, num2);
         case '/':
-            return divide(+num1, +num2);
+            return divide(num1, num2);
     };
 };
 
@@ -64,6 +66,8 @@ function displayNumber(value) {
                 combineNumberStart(digitArray);
                 combineNumberEnd(digitArray);
                 result = operate(...digitArray);
+                separateNumber(digitArray);
+                console.log(digitArray)
             };
             displayResult.textContent = `${result}`;
             break;
@@ -100,4 +104,18 @@ function combineNumberEnd(arr) {
     });
 };
 
+function separateNumber(arr) {
+    arr.forEach((value, i) => {
+        if (!(Number.isInteger(Number(value))) && !(isNaN(value))) {
+            const decimalValue = value.split('').reverse();
+            decimalValue.forEach((value, decimalI) => {
+                if (decimalI === 0) {
+                    arr.splice(i, 1, value);
+                } else {
+                    arr.splice(i, 0, value);
+                };
+            });
+        };
+    });
+};
 //Make a function/changes to code that if array length is longer than 3, it lets you make an array for the first equation, calculate that, and then calculate the rest of the equation like that one by one
