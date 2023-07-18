@@ -65,6 +65,7 @@ function displayNumber(value) {
             } else {
                 combineNumberStart(digitArray);
                 combineNumberEnd(digitArray);
+                console.log(digitArray.filter(checkEquation, {count: 0}))
                 result = operate(...digitArray);
                 separateNumber(digitArray);
                 console.log(digitArray)
@@ -95,7 +96,7 @@ function combineNumberStart(arr) {
 function combineNumberEnd(arr) {
     arr.forEach((num, i) => {
         if (isNaN(num) && num !== '.') {
-            for (let addNum = (i + 1) + 1; !(isNaN(arr[addNum]) && arr[addNum] !== '.') ||
+            for (let addNum = (i + 1) + 1; !(isNaN(arr[addNum]) && arr[addNum] !== '.') &&
             (addNum < arr.length);) {
                 arr[i + 1] += arr[addNum];
                 arr.splice(addNum, 1);
@@ -105,7 +106,7 @@ function combineNumberEnd(arr) {
 };
 
 function separateNumber(arr) {
-    for (let i = arr.length - 1; i >= 0; i--){
+    for (let i = arr.length - 1; i >= 0; i--) {
         if (!(Number.isInteger(Number(arr[i]))) && !(isNaN(arr[i]))) {
             const decimalValue = arr[i].split('').reverse();
             decimalValue.forEach((value, decimalI) => {
@@ -118,3 +119,11 @@ function separateNumber(arr) {
         };
     };
 };
+
+function checkEquation(value) {
+    if ((Number.isInteger(Number(value)) || isNaN(value)) && this.count < 3) {
+        this.count++;
+        return true;
+    };
+    return false;
+}
