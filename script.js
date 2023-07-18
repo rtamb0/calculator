@@ -55,7 +55,7 @@ digits.forEach((digit) => {
 function displayNumber(value) {
     switch (value) {
         case 'equal':
-            let result;
+            let finalResult;
             if (digitArray.length === 1) {
                 result = digitArray[0];
             } else {
