@@ -62,6 +62,7 @@ function displayNumber(value) {
                 combineNumberStart(digitArray);
                 combineNumberEnd(digitArray);
                 // Loop that calculates the left-most equation first when length is above 3
+                // Make a special condition where it operates a copy of the array and gives that result when length > 3
                 for (;digitArray.length > 3;) {
                     let equationArray = digitArray.filter(checkEquation, {count: 0});
                     let equationResult = operate(...equationArray);
