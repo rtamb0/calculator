@@ -18,10 +18,6 @@ function divide(...num) {
     return num.reduce((amount, item) => amount / item);
 };
 
-let num1;
-let operator;
-let num2;
-
 // Function that calls the operator functions when it takes the above variables
 function operate(value1, operator, value2) {
     const num1 = Number(value1);
@@ -55,26 +51,27 @@ digits.forEach((digit) => {
     });
 });
 
+// Function that calculates the numbers and display the result in the calculator
 function displayNumber(value) {
     switch (value) {
         case 'equal':
-            // Make a loop where if there are two or more digits before the operator, combine those digits into one
             let result;
             if (digitArray.length === 1) {
                 result = digitArray[0];
             } else {
                 combineNumberStart(digitArray);
                 combineNumberEnd(digitArray);
+                // Loop that calculates the left-most equation first when length is above 3
                 for (;digitArray.length > 3;) {
                     let equationArray = digitArray.filter(checkEquation, {count: 0});
                     let equationResult = operate(...equationArray);
                     digitArray.splice(0, 3, equationResult);
                 };
-                result = operate(...digitArray);
+                finalResult = operate(...digitArray);
                 separateNumber(digitArray);
                 console.log(digitArray)
             };
-            displayResult.textContent = `${result}`;
+            displayResult.textContent = `${finalResult}`;
             break;
         case 'clear':
             display.textContent = '';
@@ -130,4 +127,4 @@ function checkEquation(value) {
         return true;
     };
     return false;
-}
+};
