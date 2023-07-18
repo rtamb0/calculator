@@ -65,7 +65,11 @@ function displayNumber(value) {
             } else {
                 combineNumberStart(digitArray);
                 combineNumberEnd(digitArray);
-                console.log(digitArray.filter(checkEquation, {count: 0}))
+                for (;digitArray.length > 3;) {
+                    let equationArray = digitArray.filter(checkEquation, {count: 0});
+                    let equationResult = operate(...equationArray);
+                    digitArray.splice(0, 3, equationResult);
+                };
                 result = operate(...digitArray);
                 separateNumber(digitArray);
                 console.log(digitArray)
