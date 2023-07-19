@@ -55,6 +55,7 @@ digits.forEach((digit) => {
 function displayNumber(value) {
     switch (value) {
         case 'equal':
+            console.log(digitArray)
             let finalResult;
             combineNumberStart(digitArray);
             combineNumberEnd(digitArray);
@@ -72,9 +73,9 @@ function displayNumber(value) {
                 };
                 console.log(operateArray);
                 finalResult = operate(...operateArray);
-                separateNumber(digitArray);
-                console.log(digitArray);
-            };
+            };  
+            separateNumber(digitArray);
+            console.log(digitArray);
             displayResult.textContent = `${finalResult}`;
             break;
         case 'clear':
