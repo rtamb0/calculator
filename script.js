@@ -57,25 +57,22 @@ function displayNumber(value) {
         case 'equal':
             let finalResult;
             if (digitArray.length === 1) {
-                result = digitArray[0];
+                finalResult = digitArray[0];
             } else {
                 combineNumberStart(digitArray);
                 combineNumberEnd(digitArray);
                 console.log(digitArray)
                 // Loop that calculates the left-most equation first when length is above 3
                 // Make a special condition where it operates a copy of the array and gives that result when length > 3
-                if (digitArray.length > 3) {
-                    let digitArrayCopy = digitArray.slice();
-                    for (;digitArrayCopy.length > 3;) {
-                        let equationArray = digitArrayCopy.filter(checkEquation, {count: 0});
-                        let equationResult = operate(...equationArray);
-                        digitArrayCopy.splice(0, 3, equationResult);
-                    };
-                    console.log(digitArrayCopy)
-                    finalResult = operate(...digitArrayCopy);
-                } else {
-                    finalResult = operate(...digitArray);
+                let operateArray = digitArray.slice();
+                for (;operateArray.length > 3;) {
+                    let equationArray = operateArray.filter(checkEquation, {count: 0});
+                    let equationResult = operate(...equationArray);
+                    console.log(equationArray)
+                    operateArray.splice(0, 3, equationResult);
                 };
+                console.log(operateArray)
+                finalResult = operate(...operateArray);
                 separateNumber(digitArray);
                 console.log(digitArray)
             };
