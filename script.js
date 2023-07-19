@@ -56,14 +56,14 @@ function displayNumber(value) {
     switch (value) {
         case 'equal':
             let finalResult;
+            combineNumberStart(digitArray);
+            combineNumberEnd(digitArray);
             if (digitArray.length === 1) {
                 finalResult = digitArray[0];
             } else {
-                combineNumberStart(digitArray);
-                combineNumberEnd(digitArray);
                 console.log(digitArray);
                 let operateArray = digitArray.slice();
-                 // Loop that calculates the left-most equation first when length is above 3
+                    // Loop that calculates the left-most equation first when length is above 3
                 for (;operateArray.length > 3;) {
                     let equationArray = operateArray.filter(checkEquation, {count: 0});
                     let equationResult = operate(...equationArray);
