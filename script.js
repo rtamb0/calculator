@@ -87,6 +87,23 @@ function displayNumber(value) {
             display.textContent = display.textContent.substring(0, display.textContent.length - 1);
             digitArray.pop();
             break;
+        case '+/-':
+            combineNumberStart(digitArray);
+            combineNumberEnd(digitArray);
+            for (let i = digitArray.length - 1; i >= 0; i--) {
+                if (!isNaN(digitArray[i])) {
+                    if (digitArray[i].indexOf('-') !== -1) {
+                        digitArray[i] = digitArray[i].substring(1);
+                        break;
+                    } else {
+                        digitArray[i] = '-' + digitArray[i];
+                        break;
+                    };
+                };
+            };
+            separateNumber(digitArray);
+            console.log(digitArray);
+            break;
         default:
             if (value === '*') {
                 display.textContent += 'x';
