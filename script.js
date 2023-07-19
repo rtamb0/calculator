@@ -126,8 +126,8 @@ function separateNumber(arr) {
     };
 };
 
-function checkEquation(value) {
-    if ((Number.isInteger(Number(value)) || isNaN(value)) && this.count < 3) {
+function checkEquation() {
+    if (this.count < 3) {
         this.count++;
         return true;
     };
