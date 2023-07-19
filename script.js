@@ -116,7 +116,7 @@ function combineNumberEnd(arr) {
 
 function separateNumber(arr) {
     for (let i = arr.length - 1; i >= 0; i--) {
-        if (!(Number.isInteger(Number(arr[i]))) && !(isNaN(arr[i]))) {
+        if (arr[i].indexOf('.') !== -1) {
             const decimalValue = arr[i].split('').reverse();
             decimalValue.forEach((value, decimalI) => {
                 if (decimalI === 0) {
