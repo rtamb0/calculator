@@ -61,25 +61,25 @@ function displayNumber(value) {
             } else {
                 combineNumberStart(digitArray);
                 combineNumberEnd(digitArray);
-                console.log(digitArray)
-                // Loop that calculates the left-most equation first when length is above 3
-                // Make a special condition where it operates a copy of the array and gives that result when length > 3
+                console.log(digitArray);
                 let operateArray = digitArray.slice();
+                 // Loop that calculates the left-most equation first when length is above 3
                 for (;operateArray.length > 3;) {
                     let equationArray = operateArray.filter(checkEquation, {count: 0});
                     let equationResult = operate(...equationArray);
                     console.log(equationArray)
                     operateArray.splice(0, 3, equationResult);
                 };
-                console.log(operateArray)
+                console.log(operateArray);
                 finalResult = operate(...operateArray);
                 separateNumber(digitArray);
-                console.log(digitArray)
+                console.log(digitArray);
             };
             displayResult.textContent = `${finalResult}`;
             break;
         case 'clear':
             display.textContent = '';
+            displayResult.textContent = '';
             digitArray.splice(0);
             break;
         case 'remove':
@@ -87,7 +87,13 @@ function displayNumber(value) {
             digitArray.pop();
             break;
         default:
-            display.textContent += value;
+            if (value === '*') {
+                display.textContent += 'x';
+            } else if (value === '/') {
+                display.textContent += '÷';
+            } else {
+                display.textContent += value;
+            };
             digitArray.push(value);
     };
 };
