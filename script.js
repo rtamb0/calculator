@@ -99,7 +99,7 @@ function displayNumber(value) {
 };
 
 function combineNumberStart(arr) {
-    for (let addNum = 1; !(isNaN(arr[addNum]) && arr[addNum] !== '.');) {
+    for (let addNum = 1; !isNaN(arr[addNum]) || arr[addNum] === '.';) {
         arr[0] += arr[addNum];
         arr.splice(addNum, 1);
     };
