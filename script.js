@@ -146,7 +146,7 @@ function combineNumberEnd(arr) {
 
 function separateNumber(arr) {
     for (let i = arr.length - 1; i >= 0; i--) {
-        if (arr[i].indexOf('.') !== -1 || arr[i].indexOf('-') !== -1) {
+        if (!isNaN(arr[i]) && arr[i].length > 1) {
             const numValue = arr[i].split('').reverse();
             numValue.forEach((value, numI) => {
                 if (numI === 0) {
