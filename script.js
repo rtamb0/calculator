@@ -38,9 +38,11 @@ function operate(value1, operator, value2) {
 const display = document.createElement('p');
 const displayContainer = document.querySelector('.calculator-display');
 displayContainer.appendChild(display);
+display.classList.add('display-number');
 
 const displayResult = document.createElement('p');
 displayContainer.appendChild(displayResult);
+displayResult.classList.add('display-result');
 
 let digitArray = [];
 
