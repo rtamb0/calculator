@@ -79,6 +79,7 @@ function displayNumber(value) {
                 console.log(operateArray);
                 finalResult = operate(...operateArray);
                 if (isNaN(finalResult)) finalResult = 'Invalid expression';
+                if (finalResult === Infinity || finalResult === -Infinity) finalResult = '42...';
             };  
             separateNumber(digitArray);
             console.log(digitArray);
