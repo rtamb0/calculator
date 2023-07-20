@@ -43,6 +43,7 @@ display.classList.add('display-number');
 const displayResult = document.createElement('p');
 displayContainer.appendChild(displayResult);
 displayResult.classList.add('display-result');
+displayResult.textContent = '0'
 
 let digitArray = [];
 
@@ -85,7 +86,7 @@ function displayNumber(value) {
             break;
         case 'clear':
             display.textContent = '';
-            displayResult.textContent = '';
+            displayResult.textContent = '0';
             digitArray.splice(0);
             break;
         case 'remove':
@@ -101,7 +102,6 @@ function displayNumber(value) {
                     let match = displayReverse.match(reverseString(digitArray[i]));
                     switch (true) {
                         case (digitArray[i].indexOf('-') !== -1):
-                            console.log(displayReverse)
                             digitArray[i] = digitArray[i].substring(1);
                             break;
                         default:
@@ -120,6 +120,8 @@ function displayNumber(value) {
                 display.textContent += 'x';
             } else if (value === '/') {
                 display.textContent += '÷';
+            } else if (value === '+' && digitArray.length === 0) {
+                break;
             } else {
                 display.textContent += value;
             };
