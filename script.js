@@ -145,10 +145,10 @@ function combineNumberEnd(arr) {
 
 function separateNumber(arr) {
     for (let i = arr.length - 1; i >= 0; i--) {
-        if (arr[i].indexOf('.') !== -1) {
-            const decimalValue = arr[i].split('').reverse();
-            decimalValue.forEach((value, decimalI) => {
-                if (decimalI === 0) {
+        if (arr[i].indexOf('.') !== -1 || arr[i].indexOf('-') !== -1) {
+            const numValue = arr[i].split('').reverse();
+            numValue.forEach((value, numI) => {
+                if (numI === 0) {
                     arr.splice(i, 1, value);
                 } else {
                     arr.splice(i, 0, value);
