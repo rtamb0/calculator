@@ -93,21 +93,18 @@ function displayNumber(value) {
             for (let i = digitArray.length - 1; i >= 0; i--) {
                 if (!isNaN(digitArray[i])) {
                     let displayReverse = reverseString(display.textContent);
-                    let match;
-                    if (digitArray[i].indexOf('-') !== -1) {
-                        console.log(displayReverse)
-                        match = displayReverse.match(reverseString(digitArray[i]));
-                        digitArray[i] = digitArray[i].substring(1);
-                        displayReverse = displayReverse.replace(match, reverseString(digitArray[i]));
-                        display.textContent = reverseString(displayReverse);
-                        break;
-                    } else {
-                        match = displayReverse.match(reverseString(digitArray[i]));
-                        digitArray[i] = '-' + digitArray[i];
-                        displayReverse = displayReverse.replace(match, reverseString(digitArray[i]));
-                        display.textContent = reverseString(displayReverse);
-                        break;
+                    let match = displayReverse.match(reverseString(digitArray[i]));
+                    switch (true) {
+                        case (digitArray[i].indexOf('-') !== -1):
+                            console.log(displayReverse)
+                            digitArray[i] = digitArray[i].substring(1);
+                            break;
+                        default:
+                            digitArray[i] = '-' + digitArray[i];
                     };
+                    displayReverse = displayReverse.replace(match, reverseString(digitArray[i]));
+                    display.textContent = reverseString(displayReverse);
+                    break;
                 };
             };
             separateNumber(digitArray);
