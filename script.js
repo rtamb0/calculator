@@ -160,6 +160,7 @@ function separateNumber(arr) {
 };
 
 function checkEquation() {
+    // Goes through one number of the array 3 times (one equation = 3 numbers)
     if (this.count < 3) {
         this.count++;
         return true;
@@ -172,5 +173,6 @@ function reverseString(str) {
 };
 
 function checkDecimalPoints(value) {
+    // If there are more than one decimal points, return them
     return value.indexOf('.') !== value.lastIndexOf('.');
 };
