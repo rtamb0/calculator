@@ -59,7 +59,7 @@ function displayNumber(value) {
             let finalResult;
             combineNumberStart(digitArray);
             combineNumberEnd(digitArray);
-            if (digitArray.filter(checkDecimal).length > 0) {
+            if (digitArray.filter(checkDecimalPoints).length > 0) {
                 finalResult = 'Invalid decimals';
             } else if (digitArray.length === 1) {
                 finalResult = digitArray[0];
@@ -146,7 +146,7 @@ function combineNumberEnd(arr) {
 
 function separateNumber(arr) {
     for (let i = arr.length - 1; i >= 0; i--) {
-        if (!isNaN(arr[i]) && arr[i].length > 1 || arr.filter(checkDecimal).length > 0) {
+        if (!isNaN(arr[i]) && arr[i].length > 1 || arr.filter(checkDecimalPoints).length > 0) {
             const numValue = arr[i].split('').reverse();
             numValue.forEach((value, numI) => {
                 if (numI === 0) {
@@ -171,6 +171,6 @@ function reverseString(str) {
     return str.split('').reverse().join('');
 };
 
-function checkDecimal(value) {
+function checkDecimalPoints(value) {
     return value.indexOf('.') !== value.lastIndexOf('.');
 };
