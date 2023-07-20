@@ -13,13 +13,14 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 5px;
 }
 
 .calculator-display {
     display: flex;
     flex-direction: column;
     width: 438.66px;
-    height: 50px;
+    height: 70px;
     border-style: solid;
     border-radius: 5px;
     border-width: 2px;
@@ -27,13 +28,13 @@ header {
 }
 
 .display-number {
-    height: 15px;
-    font-size: 15px;
+    height: 20px;
+    font-size: 20px;
 }
 
 .display-result {
-    height: 25px;
-    font-size: 25px;
+    height: 40px;
+    font-size: 40px;
     align-self: flex-end;
 }
 
