@@ -116,12 +116,12 @@ function displayNumber(value) {
             console.log(digitArray); 
             break;
         default:
-            if (value === '*') {
+            if (isNaN(value) && digitArray.length === 0) {
+                break;
+            } else if (value === '*') {
                 display.textContent += 'x';
             } else if (value === '/') {
                 display.textContent += '÷';
-            } else if (value === '+' && digitArray.length === 0) {
-                break;
             } else {
                 display.textContent += value;
             };
