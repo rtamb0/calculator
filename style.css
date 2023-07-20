@@ -5,6 +5,16 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+.calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calculator-display {
+
+}
+
 .calculator-buttons {
     display: flex;
 }
