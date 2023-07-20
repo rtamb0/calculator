@@ -5,6 +5,10 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+body {
+    background-color: rgb(122, 122, 122);
+}
+
 header {
     text-align: center;
 }
@@ -25,6 +29,7 @@ header {
     border-radius: 5px;
     border-width: 2px;
     padding: 0 5px;
+    background-color: rgb(223, 218, 218);
 }
 
 .display-number {
