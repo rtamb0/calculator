@@ -45,8 +45,25 @@ header {
 .columns button {
     padding: 30px;
     font-size: 30px;
+    border-width: 1px;
+    border-color: black;
+}
+
+.digits {
+    background-color: rgb(255, 167, 4);
+}
+
+.symbols {
+    background-color: rgb(199, 194, 194);
 }
 
 #equal {
     flex: 1;
+    background-color: green;
+    color: white;
+}
+
+#remove-button, #clear-button {
+    background-color: rgb(148, 23, 23);
+    color: white;
 }
