@@ -12,7 +12,21 @@
 }
 
 .calculator-display {
+    display: flex;
+    flex-direction: column;
+    width: 438.66px;
+    border-style: solid;
+}
 
+.display-number {
+    height: 15px;
+    font-size: 15px;
+}
+
+.display-result {
+    height: 25px;
+    font-size: 25px;
+    align-self: flex-end;
 }
 
 .calculator-buttons {
