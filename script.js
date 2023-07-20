@@ -92,28 +92,20 @@ function displayNumber(value) {
             combineNumberEnd(digitArray);
             for (let i = digitArray.length - 1; i >= 0; i--) {
                 if (!isNaN(digitArray[i])) {
-                    let displayReverse = display.textContent.split('').reverse().join('');
+                    let displayReverse = reverseString(display.textContent);
                     let match;
                     if (digitArray[i].indexOf('-') !== -1) {
                         console.log(displayReverse)
+                        match = displayReverse.match(reverseString(digitArray[i]));
                         digitArray[i] = digitArray[i].substring(1);
-                        if (digitArray[i].indexOf('.') !== -1) {
-                            match = displayReverse.match(digitArray[i].split('').reverse().join('') + '-');
-                        } else {
-                            match = displayReverse.match(digitArray[i] + '-');
-                        };
-                        displayReverse = displayReverse.replace(match, digitArray[i].split('').reverse().join(''));
-                        display.textContent = displayReverse.split('').reverse().join('');
+                        displayReverse = displayReverse.replace(match, reverseString(digitArray[i]));
+                        display.textContent = reverseString(displayReverse);
                         break;
                     } else {
-                        if (digitArray[i].indexOf('.') !== -1) {
-                            match = displayReverse.match(digitArray[i].split('').reverse().join(''));
-                        } else {
-                            match = displayReverse.match(digitArray[i]);
-                        };
+                        match = displayReverse.match(reverseString(digitArray[i]));
                         digitArray[i] = '-' + digitArray[i];
-                        displayReverse = displayReverse.replace(match, match + '-');
-                        display.textContent = displayReverse.split('').reverse().join('');
+                        displayReverse = displayReverse.replace(match, reverseString(digitArray[i]));
+                        display.textContent = reverseString(displayReverse);
                         break;
                     };
                 };
@@ -174,3 +166,7 @@ function checkEquation() {
     };
     return false;
 };
+
+function reverseString(str) {
+    return str.split('').reverse().join('');
+}
