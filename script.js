@@ -75,6 +75,7 @@ function displayNumber(value) {
                 };
                 console.log(operateArray);
                 finalResult = operate(...operateArray);
+                if (isNaN(finalResult)) finalResult = 'Invalid expression';
             };  
             separateNumber(digitArray);
             console.log(digitArray);
