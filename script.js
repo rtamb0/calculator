@@ -62,7 +62,7 @@ function displayNumber(value) {
             let finalResult;
             combineNumberStart(digitArray);
             combineNumberEnd(digitArray);
-            if (digitArray.filter(checkDecimalPoints).length > 0) {
+            if (checkDecimalPoints(digitArray).length > 0) {
                 finalResult = 'Invalid decimals';
             } else if (digitArray.length === 1) {
                 finalResult = digitArray[0];
@@ -71,7 +71,7 @@ function displayNumber(value) {
             } else {
                 console.log(digitArray);
                 let operateArray = digitArray.slice();
-                    // Loop that calculates the left-most equation first when length is above 3
+                // Loop that calculates the left-most equation first when length is above 3
                 for (;operateArray.length > 3;) {
                     let equationArray = operateArray.filter(checkEquation, {count: 0});
                     let equationResult = operate(...equationArray);
@@ -153,7 +153,7 @@ function combineNumberEnd(arr) {
 
 function separateNumber(arr) {
     for (let i = arr.length - 1; i >= 0; i--) {
-        if (!isNaN(arr[i]) && arr[i].length > 1 || arr.filter(checkDecimalPoints).length > 0) {
+        if (!isNaN(arr[i]) && arr[i].length > 1 || checkDecimalPoints(arr).length > 0) {
             const numValue = arr[i].split('').reverse();
             numValue.forEach((value, numI) => {
                 if (numI === 0) {
@@ -179,13 +179,15 @@ function reverseString(str) {
     return str.split('').reverse().join('');
 };
 
-function checkDecimalPoints(value) {
-    // If there are more than one decimal points, return them
-    return value.indexOf('.') !== value.lastIndexOf('.');
+function checkDecimalPoints(arr) {
+    return arr.filter((value) => {
+        // If there are more than one decimal points, return them
+        return value.indexOf('.') !== value.lastIndexOf('.')
+    });
 };
 
 function checkTimesZero(arr) {
     return arr.filter((value, i, arr) => {
         return (value === '*' && arr[i + 1] === '0')
     });
-}
+};
