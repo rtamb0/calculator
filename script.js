@@ -31,6 +31,8 @@ function operate(value1, operator, value2) {
             return multiply(num1, num2);
         case '/':
             return divide(num1, num2);
+        default:
+            return 'Invalid expression';
     };
 };
 
@@ -64,7 +66,9 @@ function displayNumber(value) {
             combineNumberStart(digitArray);
             combineNumberEnd(digitArray);
             console.log(digitArray);
-            if (checkDecimalPoints(digitArray).length > 0) {
+            if (digitArray.length === 0) {
+                finalResult = '0';
+            } else if (checkDecimalPoints(digitArray).length > 0) {
                 finalResult = 'Invalid decimals';
             } else if (digitArray.length === 1) {
                 finalResult = digitArray[0];
@@ -79,7 +83,6 @@ function displayNumber(value) {
                     operateArray.splice(0, 3, equationResult);
                 };
                 finalResult = operate(...operateArray);
-                if (finalResult === undefined) finalResult = '0';
                 if (isNaN(finalResult)) finalResult = 'Invalid expression';
             };  
             separateNumber(digitArray);
