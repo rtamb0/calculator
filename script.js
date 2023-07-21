@@ -49,19 +49,21 @@ let digitArray = [];
 
 const digits = document.querySelectorAll('.columns button');
 digits.forEach((digit) => {
-    digit.addEventListener('click', () => {
-        displayNumber(digit.value);
-    });
+    digit.addEventListener('click', () => displayNumber(digit.value));
 });
+document.addEventListener('keydown', (e) => displayNumber(e.key));
 
 // Function that calculates the numbers and display the result in the calculator
 function displayNumber(value) {
+    console.log(value)
     switch (value) {
         case 'equal':
-            console.log(digitArray)
+        case 'Enter':
+            console.log(digitArray);
             let finalResult;
             combineNumberStart(digitArray);
             combineNumberEnd(digitArray);
+            console.log(digitArray);
             if (checkDecimalPoints(digitArray).length > 0) {
                 finalResult = 'Invalid decimals';
             } else if (digitArray.length === 1) {
@@ -69,16 +71,13 @@ function displayNumber(value) {
             } else if (checkTimesZero(digitArray).length > 0) {
                 finalResult = '42...';
             } else {
-                console.log(digitArray);
                 let operateArray = digitArray.slice();
                 // Loop that calculates the left-most equation first when length is above 3
                 for (;operateArray.length > 3;) {
                     let equationArray = operateArray.filter(checkEquation, {count: 0});
                     let equationResult = operate(...equationArray);
-                    console.log(equationArray)
                     operateArray.splice(0, 3, equationResult);
                 };
-                console.log(operateArray);
                 finalResult = operate(...operateArray);
                 if (finalResult === undefined) finalResult = '0';
                 if (isNaN(finalResult)) finalResult = 'Invalid expression';
@@ -88,11 +87,13 @@ function displayNumber(value) {
             displayResult.textContent = `${finalResult}`;
             break;
         case 'clear':
+        case 'Delete':
             display.textContent = '';
             displayResult.textContent = '0';
             digitArray.splice(0);
             break;
         case 'remove':
+        case 'Backspace':
             display.textContent = display.textContent.substring(0, display.textContent.length - 1);
             digitArray.pop();
             break;
@@ -119,7 +120,7 @@ function displayNumber(value) {
             console.log(digitArray); 
             break;
         default:
-            if (isNaN(value) && digitArray.length === 0) {
+            if ((isNaN(value) && digitArray.length === 0) || value === 'Shift') {
                 break;
             } else if (value === '*') {
                 display.textContent += 'x';
