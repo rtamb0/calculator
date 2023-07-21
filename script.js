@@ -78,6 +78,7 @@ function displayNumber(value) {
                 };
                 console.log(operateArray);
                 finalResult = operate(...operateArray);
+                if (finalResult === undefined) finalResult = '0';
                 if (isNaN(finalResult)) finalResult = 'Invalid expression';
                 if (finalResult === Infinity || finalResult === -Infinity) finalResult = '42...';
             };  
