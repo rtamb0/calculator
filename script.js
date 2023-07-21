@@ -66,6 +66,8 @@ function displayNumber(value) {
                 finalResult = 'Invalid decimals';
             } else if (digitArray.length === 1) {
                 finalResult = digitArray[0];
+            } else if (checkTimesZero(digitArray).length > 0) {
+                finalResult = '42...';
             } else {
                 console.log(digitArray);
                 let operateArray = digitArray.slice();
@@ -80,7 +82,6 @@ function displayNumber(value) {
                 finalResult = operate(...operateArray);
                 if (finalResult === undefined) finalResult = '0';
                 if (isNaN(finalResult)) finalResult = 'Invalid expression';
-                if (finalResult === Infinity || finalResult === -Infinity) finalResult = '42...';
             };  
             separateNumber(digitArray);
             console.log(digitArray);
@@ -182,3 +183,9 @@ function checkDecimalPoints(value) {
     // If there are more than one decimal points, return them
     return value.indexOf('.') !== value.lastIndexOf('.');
 };
+
+function checkTimesZero(arr) {
+    return arr.filter((value, i, arr) => {
+        return (value === '*' && arr[i + 1] === '0')
+    });
+}
