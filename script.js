@@ -72,6 +72,8 @@ function displayNumber(value) {
                 finalResult = 'Invalid decimals';
             } else if (digitArray.length === 1) {
                 finalResult = digitArray[0];
+                if (digitArray[0].indexOf('.') === 0) 
+                finalResult = '0' + finalResult;
             } else if (checkTimesZero(digitArray).length > 0) {
                 finalResult = '42...';
             } else {
@@ -123,7 +125,7 @@ function displayNumber(value) {
             console.log(digitArray); 
             break;
         default:
-            if ((isNaN(value) && digitArray.length === 0) || value === 'Shift') {
+            if ((value !== '.' && isNaN(value) &&  digitArray.length === 0) || value === 'Shift') {
                 break;
             } else if (value === '*') {
                 display.textContent += 'x';
