@@ -53,7 +53,12 @@ const digits = document.querySelectorAll('.columns button');
 digits.forEach((digit) => {
     digit.addEventListener('click', () => displayNumber(digit.value));
 });
-document.addEventListener('keydown', (e) => displayNumber(e.key));
+
+document.addEventListener('keydown', (e) => {
+    if (e.key >= 0 || e.key === '*' || e.key === '/' || e.key === '+' 
+    || e.key === '-' || e.key === 'Enter' || e.key === 'Delete' ||
+    e.key === 'Backspace') displayNumber(e.key);
+});
 
 // Function that calculates the numbers and display the result in the calculator
 function displayNumber(value) {
