@@ -79,7 +79,7 @@ function displayNumber(value) {
                 finalResult = digitArray[0];
                 if (digitArray[0].indexOf('.') === 0) 
                 finalResult = '0' + finalResult;
-            } else if (checkTimesZero(digitArray) > 0) {
+            } else if (checkDividesZero(digitArray) > 0) {
                 finalResult = '42...';
             } else {
                 let operateArray = digitArray.slice();
@@ -197,8 +197,8 @@ function checkDecimalPoints(arr) {
     }).length;
 };
 
-function checkTimesZero(arr) {
+function checkDividesZero(arr) {
     return arr.filter((value, i, arr) => {
-        return (value === '*' && arr[i + 1] === '0')
+        return (value === '/' && arr[i + 1] === '0')
     }).length;
 };
