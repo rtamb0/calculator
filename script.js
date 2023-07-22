@@ -51,6 +51,9 @@ let digitArray = [];
 
 const digits = document.querySelectorAll('.columns button');
 digits.forEach((digit) => {
+    digit.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') e.preventDefault();
+    });
     digit.addEventListener('click', () => displayNumber(digit.value));
 });
 
