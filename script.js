@@ -68,13 +68,13 @@ function displayNumber(value) {
             console.log(digitArray);
             if (digitArray.length === 0) {
                 finalResult = '0';
-            } else if (checkDecimalPoints(digitArray).length > 0) {
+            } else if (checkDecimalPoints(digitArray) > 0) {
                 finalResult = 'Invalid decimals';
             } else if (digitArray.length === 1) {
                 finalResult = digitArray[0];
                 if (digitArray[0].indexOf('.') === 0) 
                 finalResult = '0' + finalResult;
-            } else if (checkTimesZero(digitArray).length > 0) {
+            } else if (checkTimesZero(digitArray) > 0) {
                 finalResult = '42...';
             } else {
                 let operateArray = digitArray.slice();
@@ -159,7 +159,7 @@ function combineNumberEnd(arr) {
 
 function separateNumber(arr) {
     for (let i = arr.length - 1; i >= 0; i--) {
-        if (!isNaN(arr[i]) && arr[i].length > 1 || checkDecimalPoints(arr).length > 0) {
+        if (!isNaN(arr[i]) && arr[i].length > 1 || checkDecimalPoints(arr) > 0) {
             const numValue = arr[i].split('').reverse();
             numValue.forEach((value, numI) => {
                 if (numI === 0) {
@@ -189,11 +189,11 @@ function checkDecimalPoints(arr) {
     return arr.filter((value) => {
         // If there are more than one decimal points, return them
         return value.indexOf('.') !== value.lastIndexOf('.')
-    });
+    }).length;
 };
 
 function checkTimesZero(arr) {
     return arr.filter((value, i, arr) => {
         return (value === '*' && arr[i + 1] === '0')
-    });
+    }).length;
 };
